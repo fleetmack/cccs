@@ -1,0 +1,30 @@
+1 - truncate the EDW (put instructions on how)
+
+1.5 - add "0 rows" to the dimension tables (and fact tables?)
+	--find out how later....
+
+
+1 - Put function in edwmgr schema that converts multi_source_key to mif_value
+2 - add virtual column to every fact, freeze, and aggregate table
+3 - modify mappings
+	a) wdt_warehouse_entity: cartesian it to GTVVPDI
+	b) All dimenson *_Person mappings (in finaid, general, and student). Alter user_attribute_01 to yes, no, no, yes to work for merges
+	c) some wkeys mappings need work when we are dealing with an un-mep'd table, such as mst_test
+4 - modify every extract package, set all user_attribute_01 values = ret_row.multi_source
+	make sure you don't modify any user_measure_01 fields
+	this has to be done manually, all the user_attribute_01 fields have different names
+
+	also alter every join to wdt_warehouse_entity for mepped ODS tables, adding a user_attribute_01 = mif_value join
+	However, when the ODS table is not mepped, need to switch the selected value from the soure table (which will be null) to the 
+	wdt_warehouse_entity value (which will not be null)
+
+5 - set the cleansing rules = to multi_source for each of these:
+
+update mgrcdim
+   set mgrcdim_cleansing_rule_name = 'MULTI_SOURCE', mgrcdim_cleansing_ind = 1
+ where mgrcdim_column_name = 'USER_ATTRIBUTE_01'
+
+
+6 - modify all constraints/indexes
+
+7 - reload the EDW

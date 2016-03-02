@@ -1,0 +1,71 @@
+********************************************************************************
+* Oracle Warehouse Builder Export Log File
+* Created: 08/20/2014 07:57:54 MDT
+* 
+* OWB Release: 11.2.0.2.0   OWB Repository Version: 11.2.0.2.0   MDL Release: 11.2
+* User: owbrep   Connect String: (DESCRIPTION=(ADDRESS=(HOST=tstodsdb01)(PROTOCOL=tcp)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=odst.cccs.edu)))
+* 
+* Data File:  C:\Users\bmack\Desktop\EDW_STUDENT_C-20140820_0757.mdl
+* Log File:   C:\Users\bmack\Desktop\EDW_STUDENT_C-20140820_0757_exp.log   Log Message Level: ALL
+* 
+* Character Set: UTF8
+********************************************************************************
+
+Export started at 08/20/2014 07:57:54 MDT
+
+
+Exporting from workspace OWBREP
+
+ 
+Statistics
+----------
+ 
+Total Projects Exported:  1
+ 
+***********************************************
+PROJECT:    EDW_STUDENT_C
+ 
+Object Types                                Exported
+-----------------------------------------   --------
+                               ATTRIBUTE:     184864
+                              COLLECTION:          2
+                                  COLUMN:      29488
+                           CONFIGURATION:          1
+                              DEPLOYMENT:          1
+                             FOREIGN_KEY:        529
+                                FUNCTION:          4
+                                   GROUP:       2723
+                                   INDEX:        750
+                                 MAPPING:        398
+                                  MODULE:          4
+                                OPERATOR:       2135
+                                 PACKAGE:          1
+                               PARAMETER:         18
+                            PHYSICAL_MAP:        398
+                         PHYSICAL_OBJECT:        278
+                  PLATFORM_CONFIGURATION:          1
+                                 PROJECT:          1
+                                   TABLE:        273
+                              UNIQUE_KEY:        152
+                                    VIEW:          1
+ 
+Internal Objects                            Exported
+-----------------------------------------   --------
+                    BUSINESSTREESHORTCUT:         89
+                       CLOBPROPERTYVALUE:          3
+                                 DIAGRAM:        636
+                             DIAGRAMNODE:       2297
+                  FUNCTIONIMPLEMENTATION:          4
+                        GENERATIONRESULT:          2
+                            ITEMSETUSAGE:       2293
+                           LOCATIONUSAGE:          8
+                      PUREPHYSICALOBJECT:       1923
+                  REFERENCEPROPERTYVALUE:       1630
+                     STRINGPROPERTYVALUE:     146963
+                             TASKFLOWSET:          2
+ 
+
+
+Export ended at 08/20/2014 08:06:52 MDT
+
+Total export time (hh:mm:ss):  00:08:58

@@ -1,0 +1,84 @@
+select 'select count(*) as '||table_name||'_count from '||owner||'.'||table_name||';'
+  from dba_tables
+ where table_name like 'CHG/_%' escape '/'
+  and tablespace_name is not null
+  order by table_name;
+  
+  
+  
+select count(*) as CHG_ACADEMIC_OUTCOME_count from EDWSTG.CHG_ACADEMIC_OUTCOME;
+select count(*) as CHG_ACADEMIC_OUTCOME_HNR_count from EDWSTG.CHG_ACADEMIC_OUTCOME_HNR;
+select count(*) as CHG_ADMINISTRATOR_count from EDWSTG.CHG_ADMINISTRATOR;
+select count(*) as CHG_ADMISSIONS_APPLICATION_count from EDWSTG.CHG_ADMISSIONS_APPLICATION;
+select count(*) as CHG_ADMISSIONS_RECRUITMENT_count from EDWSTG.CHG_ADMISSIONS_RECRUITMENT;
+select count(*) as CHG_ADVISOR_count from EDWSTG.CHG_ADVISOR;
+select count(*) as CHG_APPLICATION_ATTRIBUTE_count from EDWSTG.CHG_APPLICATION_ATTRIBUTE;
+select count(*) as CHG_APPLICATION_ATTRIBUTE_RAP_count from EDWSTG.CHG_APPLICATION_ATTRIBUTE_RAP;
+select count(*) as CHG_APPLICATION_COHORT_count from EDWSTG.CHG_APPLICATION_COHORT;
+select count(*) as CHG_APPLICATION_COHORT_RAP_count from EDWSTG.CHG_APPLICATION_COHORT_RAP;
+select count(*) as CHG_APPLICATION_DECISION_count from EDWSTG.CHG_APPLICATION_DECISION;
+select count(*) as CHG_APPLICATION_DECISION_RAP_count from EDWSTG.CHG_APPLICATION_DECISION_RAP;
+select count(*) as CHG_APPLICATION_DETAIL_count from EDWSTG.CHG_APPLICATION_DETAIL;
+select count(*) as CHG_APPLICATION_RATING_count from EDWSTG.CHG_APPLICATION_RATING;
+select count(*) as CHG_APPLICATION_REQUIREMENT_count from EDWSTG.CHG_APPLICATION_REQUIREMENT;
+select count(*) as CHG_APPL_FOLDER_REVIEW_count from EDWSTG.CHG_APPL_FOLDER_REVIEW;
+select count(*) as CHG_APPL_REQUIREMENT_RAP_count from EDWSTG.CHG_APPL_REQUIREMENT_RAP;
+select count(*) as CHG_APPL_SUPPLEMENTAL_count from EDWSTG.CHG_APPL_SUPPLEMENTAL;
+select count(*) as CHG_ATHLETIC_count from EDWSTG.CHG_ATHLETIC;
+select count(*) as CHG_BANNER_COMMUNICATION_count from EDWSTG.CHG_BANNER_COMMUNICATION;
+select count(*) as CHG_BANNER_COMMUNICATION_RAP_count from EDWSTG.CHG_BANNER_COMMUNICATION_RAP;
+select count(*) as CHG_COMBINED_ADMISSIONS_SOURCE_count from EDWSTG.CHG_COMBINED_ADMISSIONS_SOURCE;
+select count(*) as CHG_COMMUNICATION_count from EDWSTG.CHG_COMMUNICATION;
+select count(*) as CHG_CONTACT_count from EDWSTG.CHG_CONTACT;
+select count(*) as CHG_COURSE_INSTRUCTOR_count from EDWSTG.CHG_COURSE_INSTRUCTOR;
+select count(*) as CHG_COURSE_SECTION_count from EDWSTG.CHG_COURSE_SECTION;
+select count(*) as CHG_EM_CAMPAIGN_count from EDWSTG.CHG_EM_CAMPAIGN;
+select count(*) as CHG_FEEDBACK_count from EDWSTG.CHG_FEEDBACK;
+select count(*) as CHG_FINAID_APPLICATION_count from EDWSTG.CHG_FINAID_APPLICATION;
+select count(*) as CHG_FINAID_APPLICATION_RAP_count from EDWSTG.CHG_FINAID_APPLICATION_RAP;
+select count(*) as CHG_FINAID_AWARD_ACAD_PERIOD_count from EDWSTG.CHG_FINAID_AWARD_ACAD_PERIOD;
+select count(*) as CHG_FINAID_AWARD_AID_YEAR_count from EDWSTG.CHG_FINAID_AWARD_AID_YEAR;
+select count(*) as CHG_FUNNEL_HISTORY_count from EDWSTG.CHG_FUNNEL_HISTORY;
+select count(*) as CHG_FUNNEL_PROGRESS_count from EDWSTG.CHG_FUNNEL_PROGRESS;
+select count(*) as CHG_GRADE_CHANGE_count from EDWSTG.CHG_GRADE_CHANGE;
+select count(*) as CHG_HOLD_count from EDWSTG.CHG_HOLD;
+select count(*) as CHG_INSTITUTION_count from EDWSTG.CHG_INSTITUTION;
+select count(*) as CHG_INTERACTION_count from EDWSTG.CHG_INTERACTION;
+select count(*) as CHG_INTEREST_count from EDWSTG.CHG_INTEREST;
+select count(*) as CHG_INTEREST_MACK_count from IA_ADMIN.CHG_INTEREST_MACK;
+select count(*) as CHG_INTEREST_RAP_count from EDWSTG.CHG_INTEREST_RAP;
+select count(*) as CHG_MEETING_TIME_count from EDWSTG.CHG_MEETING_TIME;
+select count(*) as CHG_PERSON_count from EDWSTG.CHG_PERSON;
+select count(*) as CHG_POST_SECONDARY_SCHOOL_count from EDWSTG.CHG_POST_SECONDARY_SCHOOL;
+select count(*) as CHG_POST_SECONDARY_SCHOOL2_count from EDWSTG.CHG_POST_SECONDARY_SCHOOL2;
+select count(*) as CHG_POST_SECONDARY_SCHOOL_RAP_count from EDWSTG.CHG_POST_SECONDARY_SCHOOL_RAP;
+select count(*) as CHG_PROSPECTIVE_STUDENT_count from EDWSTG.CHG_PROSPECTIVE_STUDENT;
+select count(*) as CHG_PROSPECTIVE_STUDENT_RAP_count from EDWSTG.CHG_PROSPECTIVE_STUDENT_RAP;
+select count(*) as CHG_RACE_count from EDWSTG.CHG_RACE;
+select count(*) as CHG_RACE_RAP_count from EDWSTG.CHG_RACE_RAP;
+select count(*) as CHG_RECRUITER_PROB_DES_count from EDWSTG.CHG_RECRUITER_PROB_DES;
+select count(*) as CHG_RECRUITER_PROB_DES_RAP_count from EDWSTG.CHG_RECRUITER_PROB_DES_RAP;
+select count(*) as CHG_RECRUITING_PERIOD_count from EDWSTG.CHG_RECRUITING_PERIOD;
+select count(*) as CHG_RECRUITING_PERIOD_RAP_count from EDWSTG.CHG_RECRUITING_PERIOD_RAP;
+select count(*) as CHG_RECRUITMENT_ATTRIBUTE_count from EDWSTG.CHG_RECRUITMENT_ATTRIBUTE;
+select count(*) as CHG_RECRUITMENT_COHORT_count from EDWSTG.CHG_RECRUITMENT_COHORT;
+select count(*) as CHG_RECR_TEAM_count from EDWSTG.CHG_RECR_TEAM;
+select count(*) as CHG_RECR_TEAM_RAP_count from EDWSTG.CHG_RECR_TEAM_RAP;
+select count(*) as CHG_REC_TEAM_TERR_GOAL_count from EDWSTG.CHG_REC_TEAM_TERR_GOAL;
+select count(*) as CHG_RETENTION_MULTI_YEAR_count from EDWSTG.CHG_RETENTION_MULTI_YEAR;
+select count(*) as CHG_SECONDARY_SCHOOL_SUBJECT_count from EDWSTG.CHG_SECONDARY_SCHOOL_SUBJECT;
+select count(*) as CHG_SECONDARY_SCHOOL_SUBJECT2_count from EDWSTG.CHG_SECONDARY_SCHOOL_SUBJECT2;
+select count(*) as CHG_STUDENT_count from EDWSTG.CHG_STUDENT;
+select count(*) as CHG_STUDENT_2_count from EDWSTG.CHG_STUDENT_2;
+select count(*) as CHG_STUDENT_ACTIVITY_count from EDWSTG.CHG_STUDENT_ACTIVITY;
+select count(*) as CHG_STUDENT_ATTRIBUTE_count from EDWSTG.CHG_STUDENT_ATTRIBUTE;
+select count(*) as CHG_STUDENT_COHORT_count from EDWSTG.CHG_STUDENT_COHORT;
+select count(*) as CHG_STUDENT_COURSE_count from EDWSTG.CHG_STUDENT_COURSE;
+select count(*) as CHG_STUDENT_COURSE_ATTR_count from EDWSTG.CHG_STUDENT_COURSE_ATTR;
+select count(*) as CHG_STUDENT_COURSE_ATTR2_count from EDWSTG.CHG_STUDENT_COURSE_ATTR2;
+select count(*) as CHG_STUDENT_COURSE_ATTR2_count from ODSSTG.CHG_STUDENT_COURSE_ATTR2;
+select count(*) as CHG_STUDENT_COURSE_ATTR2_count from ODSMGR.CHG_STUDENT_COURSE_ATTR2;
+select count(*) as CHG_STUDENT_PROGRESS_count from EDWSTG.CHG_STUDENT_PROGRESS;
+select count(*) as CHG_TEST_count from EDWSTG.CHG_TEST;
+select count(*) as CHG_TEST_RAP_count from EDWSTG.CHG_TEST_RAP;
+select count(*) as CHG_WAREHOUSE_RELOAD_count from EDWSTG.CHG_WAREHOUSE_RELOAD;

@@ -1,0 +1,3 @@
+          WHERE ((CHG.PERSON_UID = A.PERSON_UID AND CHG.COURSE_REFERENCE_NUMBER IS NULL and coalesce(chg.academic_period, a.academic_period) = a.academic_period) OR
+                   (CHG.PERSON_UID IS NULL AND CHG.COURSE_REFERENCE_NUMBER = A.COURSE_REFERENCE_NUMBER and coalesce(chg.academic_period, a.academic_period) = a.academic_period) OR
+                 (CHG.PERSON_UID = A.PERSON_UID AND CHG.COURSE_REFERENCE_NUMBER = A.COURSE_REFERENCE_NUMBER and coalesce(chg.academic_period, a.academic_period) = a.academic_period))

@@ -1,0 +1,66 @@
+********************************************************************************
+* Oracle Warehouse Builder Export Log File
+* Created: 08/20/2014 07:56:53 MDT
+* 
+* OWB Release: 11.2.0.2.0   OWB Repository Version: 11.2.0.2.0   MDL Release: 11.2
+* User: owbrep   Connect String: (DESCRIPTION=(ADDRESS=(HOST=tstodsdb01)(PROTOCOL=tcp)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=odst.cccs.edu)))
+* 
+* Data File:  C:\Users\bmack\Desktop\EDW_GENERAL_C-20140820_0756.mdl
+* Log File:   C:\Users\bmack\Desktop\EDW_GENERAL_C-20140820_0756_exp.log   Log Message Level: ALL
+* 
+* Character Set: UTF8
+********************************************************************************
+
+Export started at 08/20/2014 07:56:53 MDT
+
+
+Exporting from workspace OWBREP
+
+ 
+Statistics
+----------
+ 
+Total Projects Exported:  1
+ 
+***********************************************
+PROJECT:    EDW_GENERAL_C
+ 
+Object Types                                Exported
+-----------------------------------------   --------
+                               ATTRIBUTE:      10842
+                                  COLUMN:       3069
+                           CONFIGURATION:          1
+                              DEPLOYMENT:          1
+                             FOREIGN_KEY:         34
+                                FUNCTION:          1
+                                   GROUP:        255
+                                   INDEX:         48
+                                 MAPPING:         37
+                                  MODULE:          3
+                                OPERATOR:        205
+                               PARAMETER:          5
+                            PHYSICAL_MAP:         37
+                         PHYSICAL_OBJECT:         50
+                  PLATFORM_CONFIGURATION:          1
+                                 PROJECT:          1
+                                   TABLE:         47
+                              UNIQUE_KEY:         23
+                                    VIEW:          1
+ 
+Internal Objects                            Exported
+-----------------------------------------   --------
+                                 DIAGRAM:         47
+                             DIAGRAMNODE:        255
+                  FUNCTIONIMPLEMENTATION:          1
+                            ITEMSETUSAGE:        176
+                           LOCATIONUSAGE:          6
+                      PUREPHYSICALOBJECT:        104
+                  REFERENCEPROPERTYVALUE:        134
+                     STRINGPROPERTYVALUE:       9460
+                             TASKFLOWSET:          1
+ 
+
+
+Export ended at 08/20/2014 07:57:31 MDT
+
+Total export time (hh:mm:ss):  00:00:38

@@ -1,0 +1,1 @@
+1) Run scripts in "new_indexes_for_nvl.sql" and run them in that order.

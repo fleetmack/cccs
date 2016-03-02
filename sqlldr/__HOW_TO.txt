@@ -1,0 +1,25 @@
+here is how to run in LINUX:
+
+1) create temp tables in odsd.ia_admin schema with all the fields you will need
+2) delete header row from the CSV file(s)
+3) create control file - similar to load.ctl
+4) upload control file & data files to LINUX server wherever you'd like (the first time I used \dw01\temp\sqlldr directory
+ that I made, and subsequenly deleted ... this is fine, just remember to delete it from server when done)
+4) log onto LINUX server adn do the following to set up the environment
+
+[oracle@tstodsdb01 ~]$ . oraenv
+ORACLE_SID = [oracle] ? ODSD
+ [oracle@tstodsdb01 ~]$ echo $ORACLE_SID
+ODSD
+[oracle@tstodsdb01 ~]$ echo $ORACLE_HOME
+/dw01/app/oracle/product/11.2.0
+
+5) Issue the following command:
+
+sqlldr userid=ia_admin/***** control=/dw01/temp/sqlldr/load.ctl  log=/dw01/temp/sqlldr/load.txt
+
+This should load - if there are errors, fix them.
+
+6) when done with the data, delete temp tables from database
+7) when done with the data, delete the temp files from LINUX server
+

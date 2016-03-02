@@ -1,0 +1,75 @@
+Custom prompts from Admin UI page
+Find them here:
+ 
+Set Up Parameters -> PARAMETER -> MAPGROUP_EDW
+or
+                               -> MAPGROUP_EDW-OP
+or                             -> MAPGROUP-EDW_OP-P
+
+
+MAPGROUP_EDW -> LOAD_EDW_OPERATING_LEDGER -> CHART_IN
+FROM:
+select distinct mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_short_desc, mgrcdes_short_desc) from mgrcdes where mgrcdes_data_element = 'CHART_OF_ACCOUNTS' and mgrcdes_active_ind = 'Y' ORDER BY mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_short_desc, mgrcdes_short_desc)
+
+TO:
+select distinct mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_short_desc, mgrcdes_short_desc) from mgrcdes where mgrcdes_data_element = 'CHART_OF_ACCOUNTS' and mgrcdes_active_ind = 'Y' and mgrcdes_warehouse_value <> 'X' ORDER BY mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_short_desc, mgrcdes_short_desc)
+
+
+
+
+
+MAPGROUP_EDW -> LOAD_EDW_GENERAL_LEDGER -> CHART_IN
+FROM:
+select distinct mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_short_desc, mgrcdes_short_desc) from mgrcdes where mgrcdes_data_element = 'CHART_OF_ACCOUNTS' and mgrcdes_active_ind = 'Y' ORDER BY mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_short_desc, mgrcdes_short_desc)
+
+TO:
+select distinct mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_short_desc, mgrcdes_short_desc) from mgrcdes where mgrcdes_data_element = 'CHART_OF_ACCOUNTS' and mgrcdes_active_ind = 'Y' and mgrcdes_warehouse_value <> 'X' ORDER BY mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_short_desc, mgrcdes_short_desc)
+
+
+
+
+MAPGROUP_EDW -> LOAD_EDW_GRANT_PROJECT -> CHART_IN
+FROM:
+select distinct mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_short_desc, mgrcdes_short_desc) from mgrcdes where mgrcdes_data_element = 'CHART_OF_ACCOUNTS' and mgrcdes_active_ind = 'Y' ORDER BY mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_short_desc, mgrcdes_short_desc)
+
+TO:
+select distinct mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_short_desc, mgrcdes_short_desc) from mgrcdes where mgrcdes_data_element = 'CHART_OF_ACCOUNTS' and mgrcdes_active_ind = 'Y' and mgrcdes_warehouse_value <> 'X' ORDER BY mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_short_desc, mgrcdes_short_desc)
+
+
+MAPGROUP_EDW-OP -> (LOAD_EDW_FINAID, LOAD_EDW_FINAID_APPLICATION, LOAD_EDW_FINAID_AWD_ACADPD, LOAD_EDW_FINAID_AWD_AIDYR)
+FROM:
+oops, I didn't save it. My fault (Bryan)
+
+
+TO:
+SELECT 'ALL' || ' - ' || 'All Aid Years' sel_year_code FROM dual UNION select distinct year_code||' - '||              substr(year_code_desc,instr(year_code_desc,'2'),2)||substr(year_code,1,2)||'-'||'20'||substr(year_code,3,2) sel_year_code  from mgt_year_type_definition  where year_type = 'AIDY' ORDER BY sel_year_code DESC
+
+
+
+
+MAPGROUP_EDW-OP-P -> (LOAD_EDW_FINAID, LOAD_EDW_FINAID_APPLICATION, LOAD_EDW_FINAID_AWD_ACADPD, LOAD_EDW_FINAID_AWD_AIDYR)
+FROM:
+oops, I didn't save it. My fault (Bryan)
+
+
+TO:
+SELECT 'ALL' || ' - ' || 'All Aid Years' sel_year_code FROM dual UNION select distinct year_code||' - '||              substr(year_code_desc,instr(year_code_desc,'2'),2)||substr(year_code,1,2)||'-'||'20'||substr(year_code,3,2) sel_year_code  from mgt_year_type_definition  where year_type = 'AIDY' ORDER BY sel_year_code DESC
+
+
+
+MAPGROUP_EDW-OP-P & MAPRGROUP-EDW -> (LOAD_EDW_FINAID_STUDENT & LOAD_EDW_FINAID_PRE_STUDENT) .... MULTI_SOURCE_GROUP_IN
+FROM:
+select distinct mtvparm_internal_code_2 || ' - ' ||  mtvparm_desc from mtvparm where mtvparm_internal_code_group = 'EDW EXTRACT PARAMETERS' and mtvparm_internal_code = 'MULTI_SOURCE_GROUP' order by mtvparm_internal_code_2|| ' - ' || mtvparm_desc desc
+
+TO:
+SELECT DISTINCT mgrcdes_warehouse_value   || ' - '  || NVL(mgrcdes_user_long_desc, mgrcdes_long_desc) FROM mgrcdes WHERE mgrcdes_data_element = 'ACADEMIC_PERIOD' AND mgrcdes_active_ind     = 'Y' and mgrcdes_warehouse_value not like '8%' and mgrcdes_warehouse_value not like '7%' and mgrcdes_warehouse_value not like '6%' and substr(mgrcdes_warehouse_value,1,4) >= '2009' and substr(mgrcdes_warehouse_value,1,4) <= to_char(sysdate,'YYYY')+2 ORDER BY mgrcdes_warehouse_value  || ' - '  || NVL(mgrcdes_user_long_desc, mgrcdes_long_desc) DESC
+
+
+ 
+MAPRGROUP-EDW -> (LOAD_EDW_FINAID_STUDENT & LOAD_EDW_FINAID_PRE_STUDENT) .... academic_period_in
+FROM:
+select distinct mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_long_desc, mgrcdes_long_desc) from mgrcdes where mgrcdes_data_element = 'ACADEMIC_PERIOD' and mgrcdes_active_ind = 'Y' ORDER BY mgrcdes_warehouse_value || ' - ' || nvl(mgrcdes_user_long_desc, mgrcdes_long_desc) desc
+
+TO:
+SELECT DISTINCT mgrcdes_warehouse_value||' - '||NVL(mgrcdes_user_long_desc, mgrcdes_long_desc) FROM mgrcdes WHERE mgrcdes_data_element = 'ACADEMIC_PERIOD' AND mgrcdes_active_ind = 'Y' and substr(mgrcdes_warehouse_value,1,1) not in ('8','7','6','4') and substr(mgrcdes_warehouse_value,1,4) >= '2009' and substr(mgrcdes_warehouse_value,1,4) <= to_char(sysdate,'YYYY')+2 ORDER BY mgrcdes_warehouse_value||' - '||NVL(mgrcdes_user_long_desc, mgrcdes_long_desc) DESC
+

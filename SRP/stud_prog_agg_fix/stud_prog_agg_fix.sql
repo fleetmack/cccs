@@ -1,0 +1,94 @@
+/* Driving Table Joiner - likely missing a join at the bottom */
+
+SELECT
+/* DRIVING_TABLE_JOINER.OUTGRP1 */
+ *
+FROM
+  (SELECT
+/* UNION_ALL.OUTGRP1 */
+ *
+FROM
+  (SELECT
+  *
+FROM
+  (SELECT
+/* DUMMY_J_LOAD.OUTGRP1 */
+  *
+FROM
+  "WFT_STUDENT"  "WFT_STUDENT"
+  WHERE 
+  ( 'L'/* ATTRIBUTE INPUT_PARAMETER.OUTGRP1.PROCESS_IND_IN */ = 'L'/* OPERATOR LOAD: FILTER CONDITION */ )  AND
+  ( 1=1/* OPERATOR DUMMY_J_LOAD JOIN CONDITION */ ) and person_uid = 24860123
+--UNION ALL /* OPERATOR UNION_ALL */
+ )  ) "UNION_ALL" ) "WFT_STUDENT" ,
+  --still at 1
+  
+  
+  
+  
+  (SELECT
+/* WFT_PROSPECTIVE_STUDENT.INOUTGRP1 */
+ *
+FROM
+  "WFT_PROSPECTIVE_STUDENT"  "WFT_PROSPECTIVE_STUDENT" where person_uid = 24860123) "WFT_PROSPECTIVE_STUDENT" ,
+  (SELECT
+/* WFT_RETENTION_MULTI_YEAR.INOUTGRP1 */
+ *
+FROM
+  "WFT_RETENTION_MULTI_YEAR"  "WFT_RETENTION_MULTI_YEAR" where person_uid = 24860123) "WFT_RETENTION_MULTI_YEAR" ,
+  (SELECT
+/* WDT_RETENTION_MULTI_YEAR.INOUTGRP1 */
+ *
+FROM
+  "WDT_RETENTION_MULTI_YEAR"  "WDT_RETENTION_MULTI_YEAR" ) "WDT_RETENTION_MULTI_YEAR" 
+  ,
+"WDT_STUDENT"  "WDT_STUDENT",
+  "WDT_STUDENT_STATUS"  "WDT_STUDENT_STATUS",
+  "WDT_FINANCIAL_AID_STATUS"  "WDT_FINANCIAL_AID_STATUS",
+  "WDT_ACADEMIC_TIME"  "WDT_ACADEMIC_TIME",
+  "WDT_DEMOGRAPHIC"  "WDT_DEMOGRAPHIC",
+  "WDT_PERSON"  "WDT_PERSON"
+  WHERE 
+  ( "WDT_STUDENT"."STUDENT_KEY" = "WFT_STUDENT"."STUDENT_KEY" )  AND
+    
+  ( "WDT_STUDENT_STATUS"."STUDENT_STATUS_KEY"  =  "WFT_STUDENT"."STUDENT_STATUS_KEY" )  AND
+  
+  
+  ( "WFT_PROSPECTIVE_STUDENT"."MULTI_SOURCE_KEY"(+) =  "WFT_STUDENT"."MULTI_SOURCE_KEY" )  AND
+  ( "WFT_PROSPECTIVE_STUDENT"."PERSON_UID"(+) = "WFT_STUDENT"."PERSON_UID" )  AND
+  
+  
+  ( "WDT_FINANCIAL_AID_STATUS"."FINANCIAL_AID_STATUS_KEY" = "WFT_STUDENT"."FINANCIAL_AID_STATUS_KEY" )  AND
+  
+  ( "WDT_ACADEMIC_TIME"."ACADEMIC_TIME_KEY"  =  "WFT_STUDENT"."ACADEMIC_TIME_KEY" )  AND
+  
+  ( "WFT_RETENTION_MULTI_YEAR"."MULTI_SOURCE_KEY"(+) = "WFT_STUDENT"."MULTI_SOURCE_KEY" )  AND
+  ( "WFT_RETENTION_MULTI_YEAR"."PERSON_UID"(+) = "WFT_STUDENT"."PERSON_UID" )  AND
+  ( "WFT_RETENTION_MULTI_YEAR"."STUDENT_LEVEL"(+) = "WFT_STUDENT"."STUDENT_LEVEL" )  AND
+  
+  ( "WDT_RETENTION_MULTI_YEAR"."RETENTION_MULTI_YEAR_KEY" (+) =  "WFT_RETENTION_MULTI_YEAR"."RETENTION_MULTI_YEAR_KEY" )  AND
+  
+  ( "WDT_DEMOGRAPHIC"."DEMOGRAPHIC_KEY"  =  "WFT_STUDENT"."DEMOGRAPHIC_KEY" )  AND
+  
+  ( "WDT_PERSON"."PERSON_UID"  =  "WFT_STUDENT"."PERSON_UID" )  AND
+  /************ TA DA!!!! */
+  /** ADD ME!! ***/
+  (wdt_person.user_attribute_01 = wft_student.mif_value_vc) and
+  ** END OF ADD ME! */
+  
+  ( "WDT_PERSON"."PERSON_UID" = '32610'/* OPERATOR DRIVING_TABLE_JOINER JOIN CONDITION */ ) 
+  and wdt_academic_time.academic_time_key = '208';
+  
+  
+  select * from wft_student where person_uid = 32610 and academic_time_key = '208'; --1 row
+   select demographic_key from wft_student where person_uid = 24860123 and academic_time_key = '208'; --1 row, 
+  select * from wdt_student where student_key = 221; --1 row
+  select * from WDT_STUDENT_STATUS where STUDENT_STATUS_KEY = '50'; --1 row
+  select * from WFT_PROSPECTIVE_STUDENT where person_uid = 24860123; --1 row
+  select * from WDT_FINANCIAL_AID_STATUS where FINANCIAL_AID_STATUS_KEY = '556'; --1 row
+  select * from WDT_ACADEMIC_TIME where academic_time_key = '208'; --1 row
+  select RETENTION_MULTI_YEAR_KEY from WFT_RETENTION_MULTI_YEAR  where person_uid = 24860123; --1 row, 23
+  select * from wdt_retention_multi_year where retention_multi_year_key  = '23'; --1 row
+  select * from WDT_DEMOGRAPHIC where demographic_key = 154841; --1 row
+  select * from WDT_PERSON where person_uid = 24860123; --2 rows!!!!!!!!!!!!!
+  
