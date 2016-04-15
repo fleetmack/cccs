@@ -1,0 +1,1 @@
+alter tablespace TEMP shrink space KEEP 80G;
