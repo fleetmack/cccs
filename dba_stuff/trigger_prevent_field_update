@@ -1,0 +1,10 @@
+create or replace trigger cccs_report_cat_prod_date 
+before update on zmt_report_def
+for each row
+begin
+if :new.production_date <> :old.production_date
+  --THEN dbms_output.put_line('Cannot update the production date for a report');
+  THEN raise_application_error(-20001,'Cannot update production date once it is initialized');
+  :new.production_date := :old.production_date;
+end if;
+end;
